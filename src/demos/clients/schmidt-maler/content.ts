@@ -3,7 +3,8 @@ import type { DemoContent } from '../../types'
 export const content: DemoContent = {
   slug: 'schmidt-maler',
   code: 'schmidt-maler',
-  branch: 'Maler',
+  template: 'maler',
+  branch: 'Maler & Lackierer',
   business: {
     name: 'Schmidt Malerbetrieb',
     city: 'Nürnberg',
@@ -12,23 +13,32 @@ export const content: DemoContent = {
   },
   hero: {
     headline: 'Farbe mit Handwerk.',
-    subline: 'Innen- und Außenanstrich für Wohnung, Haus und Gewerbe.',
+    subline: 'Innen- und Außenanstrich für Wohnung, Haus und Gewerbe — saubere Kanten, hochwertige Materialien.',
   },
   about:
-    'Der Schmidt Malerbetrieb steht für saubere Kanten, hochwertige Materialien und termingerechte Abwicklung in Nürnberg und der Metropolregion.',
+    'Der Schmidt Malerbetrieb steht für termingerechte Abwicklung und perfekte Oberflächen in Nürnberg und der Metropolregion. Meisterbetrieb mit eigenem Farbberatungsservice.',
   services: [
     {
       title: 'Innenanstrich',
-      description: 'Wände, Decken, Tapezierarbeiten — sauber und schnell.',
+      description: 'Wände, Decken, Tapezierarbeiten. Abdeckung und Sauberkeit inklusive.',
     },
     {
       title: 'Fassadenanstrich',
-      description: 'Wetterfeste Beschichtungen mit langjähriger Haltbarkeit.',
+      description: 'Wetterfeste Beschichtungen mit 10 Jahren Garantie auf die Ausführung.',
     },
     {
       title: 'Lackierarbeiten',
-      description: 'Türen, Fenster und Holzelemente in perfekter Oberfläche.',
+      description: 'Türen, Fenster, Treppengeländer — präzise und langlebig.',
     },
   ],
   hours: 'Mo–Fr 07:30–16:30',
+  stats: [
+    { value: '25+', label: 'Jahre Meisterqualität' },
+    { value: '1.800', label: 'm² / Monat' },
+    { value: '48h', label: 'Angebot' },
+  ],
+  testimonial: {
+    quote: 'Pünktlich fertig, kein Klecksen, perfekte Farbabstimmung. Absolute Empfehlung.',
+    author: 'Thomas K., Nürnberg-Süd',
+  },
 }

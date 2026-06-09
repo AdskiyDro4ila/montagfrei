@@ -11,7 +11,7 @@ export function DatabasePanel() {
   return (
     <AdminSection
       title="Datenbank"
-      description="Kundenstammdaten für Handwerks- und Dienstleistungsbetriebe. Jeder Eintrag ist mit einem Zugangscode und einer Demo-Website verknüpft."
+      description="Kundenstammdaten — Klick öffnet die Demo-Website direkt."
     >
       <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
         <AdminStat label="Kunden" value={CLIENTS.length} />
@@ -26,14 +26,11 @@ export function DatabasePanel() {
             primary={client.name}
             secondary={`${client.branch} · ${client.city}`}
             meta={`Code: ${client.code}`}
+            demoSlug={client.code}
             trailing={<AdminStatus status={client.status} />}
           />
         ))}
       </div>
-
-      <p className="mt-6 font-display text-[10px] uppercase tracking-[0.1em] text-black/25">
-        Felder: Name, Branche, Stadt, Zugangscode, Website-Status, Agent-Zuweisung
-      </p>
     </AdminSection>
   )
 }

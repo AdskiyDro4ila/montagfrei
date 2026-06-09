@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { getDemoBySlug } from './registry'
-import { DemoLayout } from './templates/DemoLayout'
+import { DemoTemplate } from './templates'
 
 export function ClientDemoPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -24,5 +24,5 @@ export function ClientDemoPage() {
     )
   }
 
-  return <DemoLayout content={content} />
+  return <DemoTemplate content={content} />
 }

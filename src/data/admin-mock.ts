@@ -37,6 +37,10 @@ export const CLIENTS: ClientRecord[] = [
   },
 ]
 
+export function getClientCodeByName(name: string): string | undefined {
+  return CLIENTS.find((c) => c.name === name)?.code
+}
+
 export const SCRAPER_JOBS: ScraperJob[] = [
   {
     id: '1',

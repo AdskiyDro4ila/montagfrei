@@ -3,7 +3,8 @@ import type { DemoContent } from '../../types'
 export const content: DemoContent = {
   slug: 'fischer-haus',
   code: 'fischer-haus',
-  branch: 'Hausmeister',
+  template: 'hausmeister',
+  branch: 'Hausmeisterservice',
   business: {
     name: 'Fischer Hausmeisterservice',
     city: 'Stuttgart',
@@ -12,23 +13,32 @@ export const content: DemoContent = {
   },
   hero: {
     headline: 'Ihr Gebäude in guten Händen.',
-    subline: 'Hausmeisterservice, Wartung und schnelle Hilfe bei Notfällen.',
+    subline: 'Hausmeisterservice, Wartung und schnelle Hilfe — für Wohnanlagen und Gewerbeobjekte.',
   },
   about:
-    'Wir betreuen Wohnanlagen und Gewerbeobjekte in Stuttgart — von der Treppenhauspflege bis zur Koordination von Handwerkern vor Ort.',
+    'Wir betreuen über 60 Objekte in Stuttgart und Umgebung. Von der Treppenhauspflege bis zur Koordination aller Gewerke — ein Ansprechpartner für alles.',
   services: [
     {
       title: 'Objektbetreuung',
-      description: 'Regelmäßige Kontrollgänge, Kleinreparaturen, Winterdienst.',
+      description: 'Kontrollgänge, Kleinreparaturen, Winterdienst und Grünflächenpflege.',
     },
     {
       title: 'Notfallservice',
-      description: 'Erreichbar bei Wasserschaden, Stromausfall und dringenden Fällen.',
+      description: '24/7 erreichbar bei Wasserschaden, Stromausfall und akuten Schäden.',
     },
     {
       title: 'Wartung & Instandhaltung',
-      description: 'Heizung, Beleuchtung, Außenanlagen — proaktiv gepflegt.',
+      description: 'Heizung, Beleuchtung, Aufzüge — proaktiv gewartet, Ausfälle vermieden.',
     },
   ],
   hours: '24/7 Notfall · Mo–Fr 08:00–18:00',
+  stats: [
+    { value: '60+', label: 'Objekte' },
+    { value: '<30', label: 'Min. Reaktion' },
+    { value: '24/7', label: 'Notfall' },
+  ],
+  testimonial: {
+    quote: 'Seit dem Wechsel zu Fischer läuft alles reibungslos. Notfälle werden sofort bearbeitet.',
+    author: 'WG Verwaltung Stuttgart-Nord',
+  },
 }
