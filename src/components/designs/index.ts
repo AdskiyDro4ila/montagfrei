@@ -1,0 +1,1 @@
+export { DesignBrutalist } from './DesignBrutalist'
