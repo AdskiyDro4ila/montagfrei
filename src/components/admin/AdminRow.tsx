@@ -25,11 +25,6 @@ export function AdminRow({ primary, secondary, meta, trailing, demoSlug }: Admin
             {meta}
           </p>
         )}
-        {demoSlug && (
-          <p className="mt-2 font-display text-[10px] font-bold uppercase tracking-[0.15em] text-black/40 transition-colors group-hover:text-black">
-            Demo öffnen →
-          </p>
-        )}
       </div>
       {trailing && <div className="shrink-0">{trailing}</div>}
     </>

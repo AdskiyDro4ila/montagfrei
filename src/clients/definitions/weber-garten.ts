@@ -1,13 +1,15 @@
-import type { DemoContent } from '../../types'
+import type { ClientDefinition } from '../types'
 
-export const content: DemoContent = {
+export const weberGarten: ClientDefinition = {
+  id: '2',
+  status: 'active',
   slug: 'weber-garten',
   code: 'weber-garten',
   template: 'garten',
   branch: 'Gartenbau',
+  city: 'Augsburg',
   business: {
     name: 'Grün & Garten Weber',
-    city: 'Augsburg',
     phone: '+49 821 456 78 90',
     email: 'info@weber-garten.de',
   },
@@ -18,18 +20,9 @@ export const content: DemoContent = {
   about:
     'Wir verwandeln Außenflächen in lebendige Rückzugsorte. Regional verwurzelt in Augsburg, mit Fokus auf heimische Bepflanzung, nachhaltige Materialien und handwerkliche Präzision.',
   services: [
-    {
-      title: 'Gartengestaltung',
-      description: 'Individuelle Konzepte mit 3D-Planung — Wege, Beete, Teiche und Sitzplätze.',
-    },
-    {
-      title: 'Gartenpflege',
-      description: 'Rasen, Hecken, saisonale Arbeiten. Jahresvertrag mit festem Ansprechpartner.',
-    },
-    {
-      title: 'Terrassen & Wege',
-      description: 'Naturstein, Holz und moderne Beläge — fachgerecht und frostbeständig verlegt.',
-    },
+    { title: 'Gartengestaltung', description: 'Individuelle Konzepte mit 3D-Planung — Wege, Beete, Teiche und Sitzplätze.' },
+    { title: 'Gartenpflege', description: 'Rasen, Hecken, saisonale Arbeiten. Jahresvertrag mit festem Ansprechpartner.' },
+    { title: 'Terrassen & Wege', description: 'Naturstein, Holz und moderne Beläge — fachgerecht und frostbeständig verlegt.' },
   ],
   hours: 'Mo–Sa 08:00–17:00',
   stats: [
@@ -40,5 +33,18 @@ export const content: DemoContent = {
   testimonial: {
     quote: 'Unser Garten ist jetzt unser Lieblingsort. Die Beratung war hervorragend.',
     author: 'Familie Brenner, Augsburg',
+  },
+  scraper: {
+    source: 'Website',
+    target: 'Referenzprojekte, Leistungsspektrum',
+    status: 'running',
+    lastRun: '09.06.2026, 18:01',
+    itemsFound: 12,
+  },
+  agent: {
+    model: 'Termin & Beratung',
+    status: 'training',
+    conversations: 0,
+    lastActive: '—',
   },
 }

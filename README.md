@@ -77,36 +77,64 @@ npm run preview  # Build lokal testen
 
 ---
 
-## Demo-Websites ändern
+## Kunden verwalten
 
-Jede Demo besteht aus **einer Content-Datei** — Texte ändern ohne Layout anzufassen.
+**Eine Datei pro Kunde** — Website, Zugangscode und Admin-Panel leiten sich daraus ab.
 
 ```
-src/demos/clients/
-├── mueller-reinigung/content.ts   ← Texte, Leistungen, Kontakt
-├── weber-garten/content.ts
-├── schmidt-maler/content.ts
-└── fischer-haus/content.ts
+src/clients/definitions/
+├── _template.ts          ← Vorlage für neue Kunden
+├── mueller-reinigung.ts
+├── weber-garten.ts
+├── schmidt-maler.ts
+├── fischer-haus.ts
+└── index.ts              ← Hier eintragen (1 Zeile)
 ```
 
-**Beispiel** — Kunde will anderen Slogan:
+### Neuen Kunden anlegen (2 Schritte)
+
+**1.** `_template.ts` kopieren → `neuer-kunde.ts` ausfüllen
+
+**2.** In `definitions/index.ts` importieren und zur Liste hinzufügen:
 
 ```typescript
-// src/demos/clients/mueller-reinigung/content.ts
+import { neuerKunde } from './neuer-kunde'
+
+export const CLIENT_DEFINITIONS = [
+  // ...bestehende
+  neuerKunde,
+]
+```
+
+Fertig. Automatisch verfügbar:
+
+- Demo-Website unter `/demo/neuer-kunde`
+- Zugangscode `neuer-kunde`
+- Eintrag im Admin-Dashboard (Datenbank, Scraper, Agenten)
+- Klick im Admin → direkt zur Website
+
+### Texte ändern
+
+Nur die Kunden-Datei bearbeiten — kein anderes File anfassen:
+
+```typescript
+// src/clients/definitions/mueller-reinigung.ts
 hero: {
-  headline: 'Neuer Slogan hier',
+  headline: 'Neuer Slogan',
   subline: 'Neue Beschreibung',
 },
 ```
 
-Speichern → `git push` → Netlify deployt automatisch.
+`git push` → Netlify deployt automatisch.
 
-### Neuen Kunden anlegen
+### Templates (Branche → Design)
 
-1. Ordner erstellen: `src/demos/clients/neuer-kunde/content.ts`
-2. In `src/demos/registry.ts` importieren und registrieren
-3. Eintrag in `src/data/admin-mock.ts` (Admin-Dashboard)
-4. Fertig — Code = Slug (z. B. `neuer-kunde`)
+| `template` | Branche | Design |
+|------------|---------|--------|
+| `reinigung` | Putzfirma, Reinigung | Modern, hellblau, SaaS |
+| `garten` | Gartenbau, Landschaft | Organisch, grün, editorial |
+| `maler` | Maler, Lackierer | Bold, gelb/schwarz, kreativ |
+| `hausmeister` | Hausmeister, Facility | Dunkel, amber, industrial |
 
 ---
 
@@ -125,15 +153,16 @@ montagfrei/
 │   │   ├── CodeEntry.tsx
 │   │   └── Gallery.tsx
 │   │
-│   ├── demos/                       # ★ Kunden-Demo-Websites
-│   │   ├── clients/                 # Pro Kunde: content.ts
-│   │   ├── templates/               # Gemeinsames Layout
-│   │   ├── registry.ts              # Code → Demo Mapping
-│   │   ├── ClientDemoPage.tsx
+│   ├── clients/                     # ★ Kunden — Single Source of Truth
+│   │   ├── definitions/             # Pro Kunde: eine .ts Datei
+│   │   ├── registry.ts              # Lookup: slug, code
+│   │   ├── admin.ts                 # Admin-Panel (abgeleitet)
 │   │   └── types.ts
 │   │
-│   ├── data/
-│   │   └── admin-mock.ts            # Admin-Placeholder-Daten
+│   ├── demos/
+│   │   ├── templates/               # 4 Branchen-Designs
+│   │   ├── ClientDemoPage.tsx
+│   │   └── registry.ts              # → clients/registry
 │   │
 │   └── lib/
 │       ├── auth/                    # Zugangscodes, Sessions, Admin
@@ -149,7 +178,9 @@ montagfrei/
 
 ## Design System
 
-Alle Seiten — Plattform, Access, Admin, Demos — folgen **Design 1: Brutalist**.
+**Plattform** (Homepage, Access, Admin) — **Design 1: Brutalist**.
+
+**Kunden-Demos** — eigenes Design pro Branche (`template` in Kunden-Datei).
 
 | Token | Wert |
 |-------|------|
@@ -221,7 +252,7 @@ Ausführliche Anleitung → [`NETLIFY.md`](NETLIFY.md)
 - [x] 4 Demo-Websites mit Content-System
 - [x] React Router + `/demo/:slug`
 - [ ] Backend + echte Datenbank
-- [ ] Admin: Kunden & Codes bearbeiten
+- [ ] Admin-UI: Kunden per Formular anlegen (schreibt in DB)
 - [ ] Scraper-Anbindung
 - [ ] KI-Agent pro Kunde
 - [ ] Eigene Domain pro Kunden-Demo

@@ -1,13 +1,15 @@
-import type { DemoContent } from '../../types'
+import type { ClientDefinition } from '../types'
 
-export const content: DemoContent = {
+export const muellerReinigung: ClientDefinition = {
+  id: '1',
+  status: 'active',
   slug: 'mueller-reinigung',
   code: 'mueller-reinigung',
   template: 'reinigung',
   branch: 'Gebäudereinigung',
+  city: 'München',
   business: {
     name: 'Müller Reinigung',
-    city: 'München',
     phone: '+49 89 321 45 67',
     email: 'kontakt@mueller-reinigung.de',
   },
@@ -18,18 +20,9 @@ export const content: DemoContent = {
   about:
     'Seit über 15 Jahren sorgen wir in München und Umgebung für hygienische Räume. Zuverlässig, diskret und mit geschultem Personal — ISO-zertifizierte Prozesse inklusive.',
   services: [
-    {
-      title: 'Büroreinigung',
-      description: 'Tägliche oder wöchentliche Reinigung nach individuellem Plan. Abends oder früh morgens — störungsfrei.',
-    },
-    {
-      title: 'Fensterreinigung',
-      description: 'Streifenfreie Glasflächen innen und außen. Auch für Hochhäuser und Schaufenster.',
-    },
-    {
-      title: 'Grundreinigung',
-      description: 'Intensive Tiefenreinigung für Neubezug, Übergaben und Sanierungen.',
-    },
+    { title: 'Büroreinigung', description: 'Tägliche oder wöchentliche Reinigung nach individuellem Plan. Abends oder früh morgens — störungsfrei.' },
+    { title: 'Fensterreinigung', description: 'Streifenfreie Glasflächen innen und außen. Auch für Hochhäuser und Schaufenster.' },
+    { title: 'Grundreinigung', description: 'Intensive Tiefenreinigung für Neubezug, Übergaben und Sanierungen.' },
   ],
   hours: 'Mo–Fr 07:00–18:00',
   stats: [
@@ -40,5 +33,18 @@ export const content: DemoContent = {
   testimonial: {
     quote: 'Seit drei Jahren unser fester Partner — pünktlich, gründlich, unkompliziert.',
     author: 'Dr. Hartmann, Praxis am Sendlinger Tor',
+  },
+  scraper: {
+    source: 'Google Business',
+    target: 'Leistungen, Öffnungszeiten, Bewertungen',
+    status: 'done',
+    lastRun: '09.06.2026, 14:32',
+    itemsFound: 24,
+  },
+  agent: {
+    model: 'Anfragen & Angebote',
+    status: 'online',
+    conversations: 47,
+    lastActive: 'vor 12 Min.',
   },
 }

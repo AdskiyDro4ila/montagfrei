@@ -1,17 +1,18 @@
-import { AGENTS, getClientCodeByName } from '../../data/admin-mock'
+import { getAgentRecords, getClientSlugByName } from '../../clients/admin'
 import { AdminRow } from './AdminRow'
 import { AdminSection } from './AdminSection'
 import { AdminStat } from './AdminStat'
 import { AdminStatus } from './AdminStatus'
 
 export function AgentsPanel() {
-  const online = AGENTS.filter((a) => a.status === 'online').length
-  const totalConversations = AGENTS.reduce((sum, a) => sum + a.conversations, 0)
+  const agents = getAgentRecords()
+  const online = agents.filter((a) => a.status === 'online').length
+  const totalConversations = agents.reduce((sum, a) => sum + a.conversations, 0)
 
   return (
     <AdminSection
       title="Agenten"
-      description="KI-Agenten pro Kunde — Klick öffnet die Kunden-Demo."
+      description="KI-Agenten pro Kunde — eingebettet auf der Live-Website."
     >
       <div className="mb-8 grid grid-cols-2 gap-3">
         <AdminStat label="Online" value={online} />
@@ -19,13 +20,13 @@ export function AgentsPanel() {
       </div>
 
       <div className="rounded-[4px] border-[3px] border-black px-5">
-        {AGENTS.map((agent) => (
+        {agents.map((agent) => (
           <AdminRow
             key={agent.id}
             primary={agent.clientName}
             secondary={`${agent.branch} · ${agent.model}`}
             meta={`${agent.conversations} Gespräche · ${agent.lastActive}`}
-            demoSlug={getClientCodeByName(agent.clientName)}
+            demoSlug={getClientSlugByName(agent.clientName)}
             trailing={<AdminStatus status={agent.status} />}
           />
         ))}
