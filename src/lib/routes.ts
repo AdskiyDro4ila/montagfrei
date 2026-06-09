@@ -7,20 +7,14 @@ export const ROUTES = {
   home: '/',
   access: '/access',
   admin: '/admin',
-  client: '/client',
+  demo: '/demo',
 } as const
+
+export function demoRoute(slug: string): string {
+  return `/demo/${slug}`
+}
 
 export type RouteKey = keyof typeof ROUTES
 
 /** Current in-app views — maps to ROUTES when routing is added */
-export type AppView = 'gallery' | 'code' | 'admin' | 'client'
-
-export function viewToRoute(view: AppView): string {
-  const map: Record<AppView, string> = {
-    gallery: ROUTES.home,
-    code: ROUTES.access,
-    admin: ROUTES.admin,
-    client: ROUTES.client,
-  }
-  return map[view]
-}
+export type AppView = 'gallery' | 'code' | 'admin' | 'demo'

@@ -4,12 +4,14 @@ export interface AuthResult {
   success: boolean
   error?: string
   role?: UserRole
+  demoSlug?: string
 }
 
 export interface AuthSession {
   token: string
   expiresAt: number
   role?: UserRole
+  demoSlug?: string
 }
 
 export type UserRole = 'admin' | 'client'

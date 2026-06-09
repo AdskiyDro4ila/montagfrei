@@ -1,21 +1,10 @@
+import { getDemoSlugByCode } from '../../demos/registry'
 import { getAdminPassword, isAdminAccessCode } from './config'
 import { saveSession } from './session'
-import type { AuthResult, InviteCode, UserRole } from './types'
+import type { AuthResult, UserRole } from './types'
 
-/**
- * Client invite codes for demo websites (Putzfirmen, Gartenbauer, etc.).
- * Replace with API lookup when backend is connected.
- */
-const INVITE_CODES: InviteCode[] = [
-  { code: 'montagfrei', role: 'client' },
-]
-
-function findInvite(code: string): InviteCode | undefined {
-  return INVITE_CODES.find((invite) => invite.code === code)
-}
-
-function createSessionToken(role: UserRole): string {
-  return btoa(`mf_${role}_${Date.now()}`)
+function createSessionToken(role: UserRole, demoSlug?: string): string {
+  return btoa(`mf_${role}_${demoSlug ?? 'none'}_${Date.now()}`)
 }
 
 async function simulateLatency(): Promise<void> {
@@ -36,19 +25,20 @@ export async function validateAccessCode(code: string): Promise<AuthResult> {
 
   await simulateLatency()
 
-  const invite = findInvite(normalized)
+  const demoSlug = getDemoSlugByCode(normalized)
 
-  if (!invite) {
+  if (!demoSlug) {
     return { success: false, error: 'Invalid access code.' }
   }
 
   saveSession({
-    token: createSessionToken(invite.role),
+    token: createSessionToken('client', demoSlug),
     expiresAt: Date.now() + 24 * 60 * 60 * 1000,
-    role: invite.role,
+    role: 'client',
+    demoSlug,
   })
 
-  return { success: true, role: invite.role }
+  return { success: true, role: 'client', demoSlug }
 }
 
 /** Admin access — only when code is "admin" and password matches */

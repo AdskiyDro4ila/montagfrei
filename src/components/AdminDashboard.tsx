@@ -1,14 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import { clearSession } from '../lib/auth'
 import { AgentsPanel, DatabasePanel, ScraperPanel } from './admin'
 
-interface AdminDashboardProps {
-  onLogout: () => void
-}
+export function AdminDashboard() {
+  const navigate = useNavigate()
 
-export function AdminDashboard({ onLogout }: AdminDashboardProps) {
   function handleLogout() {
     clearSession()
-    onLogout()
+    navigate('/')
   }
 
   return (
