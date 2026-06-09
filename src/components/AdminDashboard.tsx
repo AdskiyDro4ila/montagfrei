@@ -1,5 +1,5 @@
 import { clearSession } from '../lib/auth'
-import { DesignSection } from './DesignSection'
+import { AgentsPanel, DatabasePanel, ScraperPanel } from './admin'
 
 interface AdminDashboardProps {
   onLogout: () => void
@@ -12,28 +12,32 @@ export function AdminDashboard({ onLogout }: AdminDashboardProps) {
   }
 
   return (
-    <DesignSection id="admin" className="bg-white">
-      <div className="view-enter w-full max-w-md text-center">
-        <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-black">
-          Admin
-        </p>
+    <div className="min-h-dvh w-full bg-white px-5 pb-16 pt-12 sm:px-8 sm:pt-16">
+      <div className="view-enter mx-auto w-full max-w-2xl">
+        <header className="mb-16 flex items-start justify-between gap-6">
+          <div>
+            <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-black">
+              Admin
+            </p>
+            <p className="mt-3 font-display text-[10px] uppercase tracking-[0.15em] text-black/30">
+              Montagfrei · Intern
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="shrink-0 rounded-[4px] border-[3px] border-black px-4 py-2 font-display text-[10px] font-bold uppercase tracking-[0.15em] text-black transition-all duration-300 hover:bg-black hover:text-white"
+          >
+            Logout
+          </button>
+        </header>
 
-        <p className="mt-16 font-display text-sm uppercase tracking-[0.1em] text-black/50">
-          Dashboard folgt
-        </p>
-
-        <p className="mt-8 px-4 font-display text-xs leading-relaxed text-black/30">
-          Hier werden später Kunden, Zugangscodes und implementierte Websites verwaltet.
-        </p>
-
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="mt-20 font-display text-[10px] font-bold uppercase tracking-[0.2em] text-black/20 transition-opacity duration-300 hover:text-black/50"
-        >
-          Logout
-        </button>
+        <div className="space-y-16">
+          <DatabasePanel />
+          <ScraperPanel />
+          <AgentsPanel />
+        </div>
       </div>
-    </DesignSection>
+    </div>
   )
 }
