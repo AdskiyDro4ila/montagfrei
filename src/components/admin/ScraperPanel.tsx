@@ -145,9 +145,13 @@ export function ScraperPanel() {
 
       if (apiFailed) {
 
+        const missingKeyHint = import.meta.env.PROD
+          ? 'GEOAPIFY_API_KEY fehlt in Netlify (Site configuration → Environment variables) — danach neu deployen.'
+          : 'GEOAPIFY_API_KEY in .env.local fehlt — Dev-Server danach neu starten.'
+
         const reason =
           apiStatus === 503 || apiError?.includes('GEOAPIFY_API_KEY')
-            ? 'GEOAPIFY_API_KEY in .env.local fehlt — Dev-Server danach neu starten.'
+            ? missingKeyHint
             : apiStatus === 502
               ? 'Geoapify nicht erreichbar.'
               : apiError ?? 'API-Fehler'
