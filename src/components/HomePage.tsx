@@ -3,23 +3,50 @@ import { useNavigate } from 'react-router-dom'
 import { Logo } from './Logo'
 import { HomeFooter } from './HomeFooter'
 
+const SCROLL_BUFFER = '4rem'
+
 export function HomePage() {
   const navigate = useNavigate()
   const [footerVisible, setFooterVisible] = useState(false)
 
   useEffect(() => {
     function onScroll() {
-      setFooterVisible(window.scrollY > window.innerHeight * 0.12)
+      setFooterVisible(window.scrollY > 8)
     }
 
-    onScroll()
+    function onWheel(e: WheelEvent) {
+      if (e.deltaY > 0) setFooterVisible(true)
+      if (e.deltaY < 0 && window.scrollY <= 8) setFooterVisible(false)
+    }
+
+    let touchStartY = 0
+    function onTouchStart(e: TouchEvent) {
+      touchStartY = e.touches[0].clientY
+    }
+    function onTouchMove(e: TouchEvent) {
+      const delta = touchStartY - e.touches[0].clientY
+      if (delta > 8) setFooterVisible(true)
+      if (delta < -8 && window.scrollY <= 8) setFooterVisible(false)
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('wheel', onWheel, { passive: true })
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('wheel', onWheel)
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchmove', onTouchMove)
+    }
   }, [])
 
   return (
-    <div className="relative min-h-[200dvh] bg-white">
-      {/* Logo — fixed center, stays on scroll */}
+    <div
+      className="relative bg-white"
+      style={{ minHeight: `calc(100dvh + ${SCROLL_BUFFER})` }}
+    >
       <div className="pointer-events-none fixed inset-0 z-10 flex items-center justify-center px-5 sm:px-8">
         <Logo
           onClick={() => navigate('/access')}
@@ -27,9 +54,6 @@ export function HomePage() {
           className="pointer-events-auto max-w-full text-center font-display text-[clamp(2.25rem,10vw,9rem)] font-bold uppercase leading-none tracking-tight text-black"
         />
       </div>
-
-      {/* Scroll spacer — enables scroll without moving logo */}
-      <div className="h-dvh" aria-hidden />
 
       <HomeFooter visible={footerVisible} />
     </div>
