@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { LegalLayout, LegalSection } from '../components/legal/LegalLayout'
 
 export function FaqPage() {
@@ -49,9 +50,11 @@ export function FaqPage() {
       <LegalSection title="Wie werden meine Daten geschützt?">
         <p>
           Wir verarbeiten personenbezogene Daten nur im Rahmen der geltenden
-          Datenschutzgesetze (DSGVO). Details entnehmen Sie unserem Impressum
-          und den gesonderten Datenschutzhinweisen, die wir Ihnen bei
-          Vertragsschluss zur Verfügung stellen.
+          Datenschutzgesetze (DSGVO). Details entnehmen Sie unserer{' '}
+          <Link to="/datenschutz" className="text-black underline underline-offset-2">
+            Datenschutzerklärung
+          </Link>
+          .
         </p>
       </LegalSection>
 
