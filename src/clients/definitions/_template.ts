@@ -1,22 +1,25 @@
 /**
- * Template for new customers.
+ * Neue Demo-Website einbinden
  *
- * To add a customer:
- * 1. Copy this file → rename to {slug}.ts (e.g. muster-garten.ts)
- * 2. Fill in all fields below
- * 3. Add one import line in definitions/index.ts
+ * Ablauf:
+ * 1. Demo-Ersteller füllt den Block „INHALTE“ aus (Texte, Leistungen, Kontakt)
+ * 2. Betreiber setzt „EINSTELLUNGEN“ (slug, code, template, status)
+ * 3. Eine Zeile in definitions/index.ts hinzufügen
  *
- * That's it — website, access code, and admin panel update automatically.
+ * → Demo unter /demo/{slug}, Zugangscode, Admin-Eintrag — automatisch.
  */
 
 import type { ClientDefinition } from '../types'
 
 export const templateClient: ClientDefinition = {
+  // ─── EINSTELLUNGEN (Betreiber) ───────────────────────────────────────────
   id: '5',
-  status: 'pending',
-  slug: 'kunden-slug',
-  code: 'kunden-slug',
+  status: 'pending', // pending | active | archived
+  slug: 'kunden-slug', // URL: /demo/kunden-slug
+  code: 'kunden-slug', // Zugangscode auf der Startseite
   template: 'reinigung', // reinigung | garten | maler | hausmeister
+
+  // ─── INHALTE (Demo-Ersteller) ────────────────────────────────────────────
   branch: 'Branche',
   city: 'Stadt',
   business: {
@@ -44,7 +47,8 @@ export const templateClient: ClientDefinition = {
     quote: 'Kundenstimme hier.',
     author: 'Name, Ort',
   },
-  // Optional — remove if not needed yet:
+
+  // ─── OPTIONAL (Betreiber / später) ───────────────────────────────────────
   scraper: {
     source: 'Website',
     target: 'Leistungen, Kontakt',

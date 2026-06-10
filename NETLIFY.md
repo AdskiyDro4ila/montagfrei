@@ -95,6 +95,22 @@ Netlify → **Domain management** → **Add custom domain**
 
 ---
 
+## Kosten
+
+**Nein — für dieses Projekt kostet Netlify nichts.**
+
+Der [Free Plan](https://www.netlify.com/pricing/) ($0) reicht:
+
+- Git-Deploys von `main`
+- `netlify.app`-Subdomain + Custom Domain mit SSL
+- 300 Credits/Monat (ca. 20 Production-Deploys à 15 Credits)
+
+Keine Kreditkarte nötig. Upgrade erst bei deutlich mehr Traffic oder vielen täglichen Deploys.
+
+---
+
 ## Automatische Updates
 
-Ab jetzt: Jeder `git push` auf GitHub deployt automatisch neu auf Netlify. Du musst nichts mehr manuell hochladen.
+Jeder `git push` auf `main` deployt automatisch neu auf Netlify (~1–2 Min.).
+
+Der Cursor-Agent committet und pusht nach jeder Änderung selbstständig (Regel: `.cursor/rules/auto-deploy-netlify.mdc`).

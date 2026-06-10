@@ -4,111 +4,99 @@ import { LegalLayout, LegalSection } from '../components/legal/LegalLayout'
 export function FaqPage() {
   return (
     <LegalLayout title="FAQ">
-      <p className="text-lg leading-relaxed text-black/80">
-        Montagfrei macht professionelle Online-Präsenz für kleine Betriebe
-        einfach — ohne IT-Abteilung, ohne Komplexität.
+      <p className="text-black/50">
+        Die wichtigsten Fragen zu Website, Demo-Zugang und KI-Agent.
       </p>
 
-      <LegalSection title="Was ist Montagfrei?">
+      <LegalSection title="Was bietet Montagfrei?">
         <p>
-          Montagfrei ist eine digitale Plattform für kleine Handwerks- und
-          Dienstleistungsbetriebe — Putzfirmen, Gartenbauer, Maler, Hausmeister
-          und vergleichbare Gewerbe. Wir erstellen professionelle Demo-Websites
-          und bereiten die Integration eines KI-Agenten auf der Live-Website des
-          Kunden vor.
+          Montagfrei richtet für Handwerks- und Dienstleistungsbetriebe eine
+          professionelle Website ein — inklusive persönlicher Demo zur Abstimmung
+          und anschließender Live-Umsetzung auf Ihrer Domain. Im Anschluss wird
+          ein KI-Agent auf der Website eingebunden, der Kundenanfragen übernimmt
+          und Ihren Betrieb im Alltag entlastet.
         </p>
       </LegalSection>
 
-      <LegalSection title="Für wen ist Montagfrei?">
+      <LegalSection title="Wie läuft die Zusammenarbeit ab?">
         <p>
-          Putzfirmen, Gartenbauer, Maler, Hausmeisterservices und vergleichbare
-          Gewerbe. Betriebe, die Qualität in ihrem Handwerk liefern — und eine
-          Website brauchen, die genauso zuverlässig wirkt.
+          (1) Sie erhalten eine Demo-Website mit individuellem Zugangscode zur
+          Prüfung von Texten, Aufbau und Design.
+        </p>
+        <p>
+          (2) Nach Ihrer Freigabe setzen wir die Website auf Ihrer Wunsch-Domain
+          um.
+        </p>
+        <p>
+          (3) Anschließend konfigurieren und aktivieren wir den KI-Agenten auf
+          Ihrer Live-Website — abgestimmt auf Ihre Leistungen, Abläufe und
+          Kommunikation.
         </p>
       </LegalSection>
 
-      <LegalSection title="Was macht Montagfrei konkret?">
+      <LegalSection title="Der KI-Agent">
         <p>
-          Wir erstellen individuelle Demo-Websites mit persönlichem Zugangscode.
-          Der Kunde sieht sein digitales Schaufenster, gibt Feedback, und wir
-          setzen es auf der Wunsch-Domain um. Schritt für Schritt, ohne
-          Fachchinesisch.
+          Der KI-Agent ist die zentrale Erweiterung Ihrer Website: Er beantwortet
+          Anfragen von Besuchern direkt auf der Seite — zu Leistungen,
+          Verfügbarkeit, Abläufen und Terminen. Er ist rund um die Uhr erreichbar,
+          antwortet einheitlich und professionell und nimmt Ihnen wiederkehrende
+          Rückfragen ab.
+        </p>
+        <p>
+          So bleibt mehr Zeit für die eigentliche Arbeit im Betrieb, während
+          potenzielle Kunden auch außerhalb Ihrer Geschäftszeiten eine schnelle
+          Orientierung erhalten.
         </p>
       </LegalSection>
 
-      <LegalSection title="Wie arbeitet Montagfrei?">
+      <LegalSection title="Was übernimmt der KI-Agent konkret?">
         <p>
-          Klar, minimal, ehrlich. Kein Agentur-Blabla. Eine Demo, ein Code,
-          eine Website — fertig. Anpassungen jederzeit, weil Inhalte und Texte
-          zentral gepflegt werden können.
+          Je nach Konfiguration beantwortet er Leistungs- und Preisfragen,
+          erklärt Ihr Servicegebiet, unterstützt bei Termin- und
+          Kontaktanfragen und leitet qualifizierte Anliegen strukturiert an Sie
+          weiter. Inhalte und Antwortlogik werden auf Basis Ihrer freigegebenen
+          Website und Ihrer Vorgaben eingerichtet.
         </p>
       </LegalSection>
 
       <LegalSection title="Wie erhalte ich Zugang zur Demo-Website?">
         <p>
-          Sie erhalten von uns einen individuellen Zugangscode. Auf der
-          Startseite klicken Sie auf „Montagfrei“, geben den Code ein und
-          gelangen direkt zu Ihrer persönlichen Demo-Website.
+          Sie erhalten von uns einen persönlichen Zugangscode. Auf der Startseite
+          auf „Montagfrei“ klicken, Code eingeben — Sie gelangen direkt zu Ihrer
+          Demo.
         </p>
       </LegalSection>
 
-      <LegalSection title="Ist die Demo-Website bereits meine finale Website?">
+      <LegalSection title="Ist die Demo bereits die Live-Website?">
         <p>
-          Die Demo dient als Entwurf zur Abstimmung von Texten, Struktur und
-          Design. Nach Ihrer Freigabe implementieren wir die Website auf Ihrer
-          Wunsch-Domain. Anpassungen können jederzeit besprochen werden.
+          Nein. Die Demo dient der Abstimmung. Erst nach Ihrer Freigabe geht die
+          Website auf Ihrer Domain live; der KI-Agent folgt im Anschluss.
         </p>
       </LegalSection>
 
       <LegalSection title="Was kostet der Service?">
         <p>
           Die Konditionen werden individuell vereinbart — abhängig von Umfang,
-          Branche und gewünschten Zusatzleistungen wie KI-Agent oder laufender
-          Wartung. Ein Angebot erhalten Sie nach dem Erstgespräch.
+          Branche und gewünschten Leistungen wie KI-Agent oder laufender Wartung.
+          Ein Angebot erhalten Sie nach dem Erstgespräch.
         </p>
       </LegalSection>
 
-      <LegalSection title="Was ist der KI-Agent?">
+      <LegalSection title="Fragen oder Interesse?">
         <p>
-          Der KI-Agent wird auf Ihrer Live-Website eingebunden und beantwortet
-          Kundenanfragen, unterstützt bei Terminanfragen und entlastet Ihren
-          Betrieb im Alltag. Die Einführung erfolgt nach Fertigstellung und
-          Freigabe Ihrer Website — weniger Unterbrechung, mehr Zeit fürs
-          eigentliche Handwerk.
-        </p>
-      </LegalSection>
-
-      <LegalSection title="Wie werden meine Daten geschützt?">
-        <p>
-          Wir verarbeiten personenbezogene Daten nur im Rahmen der geltenden
-          Datenschutzgesetze (DSGVO). Details entnehmen Sie dem Abschnitt
-          Datenschutz in unseren{' '}
+          <a href="mailto:kontakt@montagfrei.de" className="text-black underline underline-offset-2">
+            kontakt@montagfrei.de
+          </a>
+          {' '}— wir melden uns in der Regel innerhalb von zwei Werktagen.
+          Rechtliche Hinweise:{' '}
+          <Link to="/impressum" className="text-black underline underline-offset-2">
+            Impressum
+          </Link>
+          ,{' '}
           <Link to="/agb" className="text-black underline underline-offset-2">
             AGB
           </Link>
           .
-        </p>
-      </LegalSection>
-
-      <LegalSection title="An wen wende ich mich bei Fragen?">
-        <p>
-          Schreiben Sie uns an{' '}
-          <a href="mailto:kontakt@montagfrei.de" className="text-black underline underline-offset-2">
-            kontakt@montagfrei.de
-          </a>
-          . Wir melden uns in der Regel innerhalb von zwei Werktagen.
-        </p>
-        <p>
-          Schreiben Sie uns kurz, welchen Betrieb Sie führen und was Sie
-          benötigen — Demo-Website, Live-Umsetzung oder KI-Agent. Wir melden
-          uns mit den nächsten Schritten.
-        </p>
-        <p>
-          Bereits einen Code? Auf der{' '}
-          <Link to="/" className="text-black underline underline-offset-2">
-            Startseite
-          </Link>{' '}
-          auf Montagfrei klicken und Code eingeben.
         </p>
       </LegalSection>
     </LegalLayout>
