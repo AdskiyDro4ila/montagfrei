@@ -1,17 +1,26 @@
+import { isDeletableClient } from './data/repository'
 import { getAllClients } from './registry'
+import type { ScraperLead } from './scraper/leadTypes'
 import type { AgentRecord, ClientRecord, ScraperJob } from '../types/admin'
-
-/** Admin panel data — derived from client registry, not duplicated */
 
 export function getClientRecords(): ClientRecord[] {
   return getAllClients().map((c) => ({
     id: c.id,
     name: c.business.name,
-    branch: c.branch,
+    branch: c.business.branch,
     code: c.code,
-    city: c.city,
+    city: c.business.city,
     status: c.status,
+    deletable: isDeletableClient(c.id),
   }))
+}
+
+export function isLeadAlreadyClient(lead: ScraperLead): boolean {
+  return getAllClients().some(
+    (c) =>
+      c.business.name === lead.name ||
+      (!!lead.phone && c.business.phone === lead.phone),
+  )
 }
 
 export function getScraperJobs(): ScraperJob[] {
@@ -34,7 +43,7 @@ export function getAgentRecords(): AgentRecord[] {
     .map((c) => ({
       id: c.id,
       clientName: c.business.name,
-      branch: c.branch,
+      branch: c.business.branch,
       model: c.agent!.model,
       status: c.agent!.status,
       conversations: c.agent!.conversations,

@@ -44,7 +44,7 @@ export function HausmeisterTemplate({ content }: { content: DemoContent }) {
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <h2 className="text-2xl font-bold">Unsere Leistungen</h2>
-        <p className="mt-2 text-slate-500">Alles aus einer Hand — für Ihr Objekt.</p>
+        <p className="mt-2 text-slate-500">Alles aus einer Hand, für Ihr Objekt.</p>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {services.map((s) => (
             <div key={s.title} className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:shadow-md">

@@ -11,6 +11,8 @@ export interface ClientRecord {
   code: string
   city: string
   status: RecordStatus
+  /** Nur Scraper-Kunden (dyn-*) — später auch Supabase-Einträge */
+  deletable: boolean
 }
 
 export interface ScraperJob {

@@ -24,16 +24,25 @@ export function ImpressumPage() {
 
       <LegalSection title="Kontakt">
         <p>
+          Web:{' '}
+          <a
+            href="https://montagfrei.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black underline underline-offset-2"
+          >
+            montagfrei.com
+          </a>
+          <br />
           Telefon: [Telefonnummer]
           <br />
           E-Mail:{' '}
-          <a href="mailto:kontakt@montagfrei.de" className="text-black underline underline-offset-2">
-            kontakt@montagfrei.de
+          <a href="mailto:kontakt@montagfrei.com" className="text-black underline underline-offset-2">
+            kontakt@montagfrei.com
           </a>
         </p>
         <p>
-          Wir melden uns in der Regel innerhalb von zwei Werktagen. Schreiben Sie
-          uns kurz, welchen Betrieb Sie führen und was Sie benötigen —
+          Schreiben Sie uns kurz, welchen Betrieb Sie führen und was Sie benötigen:
           Demo-Website, Live-Umsetzung oder KI-Agent.
         </p>
         <p>
@@ -49,7 +58,7 @@ export function ImpressumPage() {
         <p>
           Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:
           <br />
-          [DE XXX XXX XXX] — sofern vorhanden
+          [DE XXX XXX XXX], sofern vorhanden
         </p>
       </LegalSection>
 

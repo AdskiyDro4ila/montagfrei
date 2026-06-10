@@ -1,17 +1,11 @@
-import { getAllClients, getClientByCode, getClientBySlug, toDemoContent } from '../clients/registry'
-import type { DemoContent } from './types'
+import { getAllClients, getClientByCode, getClientBySlug } from '../clients/registry'
 
-export function getDemoBySlug(slug: string): DemoContent | undefined {
-  const client = getClientBySlug(slug)
-  return client ? toDemoContent(client) : undefined
+export function getClientDataBySlug(slug: string) {
+  return getClientBySlug(slug)
 }
 
 export function getDemoSlugByCode(code: string): string | undefined {
   return getClientByCode(code)?.slug
-}
-
-export function getAllDemos(): DemoContent[] {
-  return getAllClients().map(toDemoContent)
 }
 
 export const DEMO_SLUGS = getAllClients().map((c) => c.slug)

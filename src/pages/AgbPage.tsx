@@ -190,8 +190,8 @@ export function AgbPage() {
         <p>
           <strong>Verantwortlicher:</strong> Montagfrei, [Vor- und Nachname /
           Firma], [Anschrift], E-Mail:{' '}
-          <a href="mailto:kontakt@montagfrei.de" className="text-black underline underline-offset-2">
-            kontakt@montagfrei.de
+          <a href="mailto:kontakt@montagfrei.com" className="text-black underline underline-offset-2">
+            kontakt@montagfrei.com
           </a>
         </p>
         <p>
@@ -275,7 +275,7 @@ export function AgbPage() {
         </p>
         <p>
           (2) Gerichtsstand für alle Streitigkeiten aus dem Vertragsverhältnis
-          ist — soweit gesetzlich zulässig — der Sitz des Anbieters.
+          ist, soweit gesetzlich zulässig, der Sitz des Anbieters.
         </p>
         <p>
           (3) Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt

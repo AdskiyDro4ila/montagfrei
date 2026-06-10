@@ -63,6 +63,10 @@ Vor dem ersten Deploy:
    | Key | Value |
    |-----|-------|
    | `VITE_ADMIN_PASSWORD` | dein-sicheres-passwort |
+   | `VITE_SUPABASE_URL` | *(optional)* Supabase Project URL |
+   | `VITE_SUPABASE_ANON_KEY` | *(optional)* Supabase anon key |
+
+   Ohne Supabase: dynamische Kunden landen im Browser (localStorage). Mit Supabase: zentral in der Cloud — siehe [`SUPABASE.md`](SUPABASE.md).
 
 3. **Deploy montagfrei** klicken
 
@@ -97,20 +101,12 @@ Netlify → **Domain management** → **Add custom domain**
 
 ## Kosten
 
-**Nein — für dieses Projekt kostet Netlify nichts.**
+Der [Free Plan](https://www.netlify.com/pricing/) ist $0 — aber **jeder Production-Deploy verbraucht 15 Credits** (300 Credits/Monat ≈ 20 Deploys).
 
-Der [Free Plan](https://www.netlify.com/pricing/) ($0) reicht:
-
-- Git-Deploys von `main`
-- `netlify.app`-Subdomain + Custom Domain mit SSL
-- 300 Credits/Monat (ca. 20 Production-Deploys à 15 Credits)
-
-Keine Kreditkarte nötig. Upgrade erst bei deutlich mehr Traffic oder vielen täglichen Deploys.
+Deshalb: lokal mit `npm run dev` entwickeln. Netlify nur bei bewusstem Release deployen.
 
 ---
 
 ## Automatische Updates
 
-Jeder `git push` auf `main` deployt automatisch neu auf Netlify (~1–2 Min.).
-
-Der Cursor-Agent committet und pusht nach jeder Änderung selbstständig (Regel: `.cursor/rules/auto-deploy-netlify.mdc`).
+Wenn GitHub mit Netlify verbunden ist, deployt jeder `git push` auf `main` automatisch (~1–2 Min.). Nicht bei jeder kleinen Änderung pushen — Credits sparen.

@@ -37,7 +37,7 @@ export function Logo({
         ${className}
       `}
       style={style}
-      aria-label="Montagfrei — Zugang"
+      aria-label="Montagfrei Zugang"
     >
       {children ?? 'Montagfrei'}
     </button>

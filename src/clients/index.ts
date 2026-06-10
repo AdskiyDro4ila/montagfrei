@@ -1,9 +1,8 @@
-export type { ClientDefinition, ClientTemplate } from './types'
+export type { ClientData, ClientService } from './data/types'
 export {
   getAllClients,
   getClientBySlug,
   getClientByCode,
-  toDemoContent,
 } from './registry'
 export {
   getClientRecords,

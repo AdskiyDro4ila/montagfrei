@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { ClientsBootstrap } from './components/ClientsBootstrap'
 import { Gallery } from './components/Gallery'
 import { CodeEntry } from './components/CodeEntry'
 import { AdminDashboard } from './components/AdminDashboard'
@@ -10,6 +11,7 @@ import { AgbPage } from './pages/AgbPage'
 export default function App() {
   return (
     <BrowserRouter>
+      <ClientsBootstrap />
       <Routes>
         <Route path="/" element={<Gallery />} />
         <Route path="/access" element={<CodeEntry />} />

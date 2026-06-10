@@ -1,12 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
-import { getDemoBySlug } from './registry'
-import { DemoTemplate } from './templates'
+import { getClientDataBySlug } from './registry'
+import { getDemoSite } from './sites/registry'
 
 export function ClientDemoPage() {
   const { slug } = useParams<{ slug: string }>()
-  const content = slug ? getDemoBySlug(slug) : undefined
-
-  if (!content) {
+  const data = slug ? getClientDataBySlug(slug) : undefined
+  if (!data || !slug) {
     return (
       <div className="flex min-h-dvh items-center justify-center bg-white px-5">
         <div className="text-center">
@@ -24,5 +23,6 @@ export function ClientDemoPage() {
     )
   }
 
-  return <DemoTemplate content={content} />
+  const SiteComponent = getDemoSite(slug)
+  return <SiteComponent data={data} />
 }

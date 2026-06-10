@@ -5,7 +5,16 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback — alle Routen liefern index.html (für späteres Routing)
+[functions]
+  directory = "netlify/functions"
+
+# Overpass-Proxy für Scraper (Production)
+[[redirects]]
+  from = "/api/overpass"
+  to = "/.netlify/functions/overpass"
+  status = 200
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"

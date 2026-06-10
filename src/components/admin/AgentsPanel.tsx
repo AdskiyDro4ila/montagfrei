@@ -1,10 +1,12 @@
 import { getAgentRecords, getClientSlugByName } from '../../clients/admin'
+import { useClientsVersion } from '../../hooks/useClientsVersion'
 import { AdminRow } from './AdminRow'
 import { AdminSection } from './AdminSection'
 import { AdminStat } from './AdminStat'
 import { AdminStatus } from './AdminStatus'
 
 export function AgentsPanel() {
+  useClientsVersion() // sync mit Supabase / Scraper
   const agents = getAgentRecords()
   const online = agents.filter((a) => a.status === 'online').length
   const totalConversations = agents.reduce((sum, a) => sum + a.conversations, 0)
@@ -12,7 +14,7 @@ export function AgentsPanel() {
   return (
     <AdminSection
       title="Agenten"
-      description="KI-Agenten pro Kunde — eingebettet auf der Live-Website."
+      description="KI-Agenten pro Kunde, eingebettet auf der Live-Website."
     >
       <div className="mb-8 grid grid-cols-2 gap-3">
         <AdminStat label="Online" value={online} />
