@@ -119,6 +119,13 @@ function CircleDrawHandler({
   return null
 }
 
+function pointerToLatLng(map: L.Map, e: PointerEvent): L.LatLng {
+  const rect = map.getContainer().getBoundingClientRect()
+  return map.containerPointToLatLng(
+    L.point(e.clientX - rect.left, e.clientY - rect.top),
+  )
+}
+
 function FreehandDrawHandler({
   active,
   onDone,
@@ -130,35 +137,21 @@ function FreehandDrawHandler({
   const pointsRef = useRef<L.LatLng[]>([])
   const previewRef = useRef<L.Polyline | null>(null)
   const drawingRef = useRef(false)
+  const pointerIdRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (!active) return
 
     const container = map.getContainer()
     container.style.cursor = 'crosshair'
+    container.style.touchAction = 'none'
     map.doubleClickZoom.disable()
+    map.touchZoom.disable()
 
-    function start(e: L.LeafletMouseEvent) {
-      L.DomEvent.stopPropagation(e)
-      drawingRef.current = true
-      pointsRef.current = [e.latlng]
-      previewRef.current = L.polyline([e.latlng], {
-        color: '#000',
-        weight: 2,
-        dashArray: '4 4',
-      }).addTo(map)
-      map.dragging.disable()
-    }
-
-    function move(e: L.LeafletMouseEvent) {
-      if (!drawingRef.current || !previewRef.current) return
-      pointsRef.current.push(e.latlng)
-      previewRef.current.setLatLngs(pointsRef.current)
-    }
-
-    function end() {
+    function finishDrawing() {
       if (!drawingRef.current) return
       drawingRef.current = false
+      pointerIdRef.current = null
       map.dragging.enable()
 
       if (previewRef.current) {
@@ -173,17 +166,62 @@ function FreehandDrawHandler({
       onDone(L.polygon(simplified, SHAPE_STYLE))
     }
 
-    map.on('mousedown', start)
-    map.on('mousemove', move)
-    map.on('mouseup', end)
+    function start(e: Event) {
+      const pe = e as PointerEvent
+      if (pe.pointerType === 'mouse' && pe.button !== 0) return
+      if (drawingRef.current) return
+
+      L.DomEvent.preventDefault(e)
+      L.DomEvent.stopPropagation(e)
+
+      drawingRef.current = true
+      pointerIdRef.current = pe.pointerId
+      container.setPointerCapture(pe.pointerId)
+
+      const latlng = pointerToLatLng(map, pe)
+      pointsRef.current = [latlng]
+      previewRef.current = L.polyline([latlng], {
+        color: '#000',
+        weight: 2,
+        dashArray: '4 4',
+      }).addTo(map)
+      map.dragging.disable()
+    }
+
+    function move(e: Event) {
+      const pe = e as PointerEvent
+      if (!drawingRef.current || !previewRef.current) return
+      if (pointerIdRef.current !== null && pe.pointerId !== pointerIdRef.current) return
+
+      L.DomEvent.preventDefault(e)
+      pointsRef.current.push(pointerToLatLng(map, pe))
+      previewRef.current.setLatLngs(pointsRef.current)
+    }
+
+    function end(e: Event) {
+      const pe = e as PointerEvent
+      if (pointerIdRef.current !== null && pe.pointerId !== pointerIdRef.current) return
+      if (container.hasPointerCapture(pe.pointerId)) {
+        container.releasePointerCapture(pe.pointerId)
+      }
+      finishDrawing()
+    }
+
+    L.DomEvent.on(container, 'pointerdown', start)
+    L.DomEvent.on(container, 'pointermove', move)
+    L.DomEvent.on(container, 'pointerup', end)
+    L.DomEvent.on(container, 'pointercancel', end)
 
     return () => {
       container.style.cursor = ''
+      container.style.touchAction = ''
       map.doubleClickZoom.enable()
+      map.touchZoom.enable()
       map.dragging.enable()
-      map.off('mousedown', start)
-      map.off('mousemove', move)
-      map.off('mouseup', end)
+      L.DomEvent.off(container, 'pointerdown', start)
+      L.DomEvent.off(container, 'pointermove', move)
+      L.DomEvent.off(container, 'pointerup', end)
+      L.DomEvent.off(container, 'pointercancel', end)
       if (previewRef.current) map.removeLayer(previewRef.current)
     }
   }, [active, map, onDone])
@@ -322,7 +360,7 @@ export function ScraperMap({ area, onAreaChange }: ScraperMapProps) {
 
       <p className="border-t border-black/10 px-4 py-2 font-display text-[10px] uppercase tracking-[0.12em] text-black/40">
         {drawMode === 'circle' && 'Kreis: Auf der Karte klicken und ziehen'}
-        {drawMode === 'freehand' && 'Freihand: Mit gedrückter Maus um das Gebiet fahren'}
+        {drawMode === 'freehand' && 'Freihand: Mit Finger oder Maus um das Gebiet fahren'}
         {!drawMode && !area && 'Kreis oder Freihand wählen, dann Gebiet zeichnen'}
         {!drawMode && area && 'Gebiet gesetzt — neu zeichnen oder löschen'}
       </p>

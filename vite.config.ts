@@ -1,9 +1,9 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
-function placesProxy(apiKey: string) {
+function placesProxyMiddleware(apiKey: string) {
   return async (
     req: IncomingMessage,
     res: ServerResponse,
@@ -38,15 +38,19 @@ function placesProxy(apiKey: string) {
   }
 }
 
+function geoapifyProxyPlugin(apiKey: string): Plugin {
+  return {
+    name: 'geoapify-proxy',
+    configureServer(server) {
+      server.middlewares.use(placesProxyMiddleware(apiKey))
+    },
+  }
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    plugins: [react(), tailwindcss()],
-    server: {
-      configureServer(server) {
-        server.middlewares.use(placesProxy(env.GEOAPIFY_API_KEY ?? ''))
-      },
-    },
+    plugins: [react(), tailwindcss(), geoapifyProxyPlugin(env.GEOAPIFY_API_KEY ?? '')],
   }
 })

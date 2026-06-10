@@ -130,7 +130,8 @@ export function ScraperPanel() {
 
     try {
 
-      const { leads: results, source, apiFailed } = await searchLeadsInArea({
+      const { leads: results, source, apiFailed, apiError, apiStatus } =
+        await searchLeadsInArea({
 
         area: searchArea,
 
@@ -144,9 +145,16 @@ export function ScraperPanel() {
 
       if (apiFailed) {
 
+        const reason =
+          apiStatus === 503 || apiError?.includes('GEOAPIFY_API_KEY')
+            ? 'GEOAPIFY_API_KEY in .env.local fehlt — Dev-Server danach neu starten.'
+            : apiStatus === 502
+              ? 'Geoapify nicht erreichbar.'
+              : apiError ?? 'API-Fehler'
+
         setMessage({
 
-          text: `${results.length} Demo-Treffer — Geoapify nicht erreichbar. GEOAPIFY_API_KEY in .env.local prüfen.`,
+          text: `${results.length} Demo-Treffer — ${reason}`,
 
           tone: 'info',
 
