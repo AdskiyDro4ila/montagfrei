@@ -10,6 +10,10 @@ export default defineConfig({
         target: 'https://overpass-api.de',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/overpass/, '/api/interpreter'),
+        headers: {
+          Accept: 'application/json',
+          'User-Agent': 'Montagfrei/1.0 (https://montagfrei.com; kontakt@montagfrei.com)',
+        },
       },
     },
   },

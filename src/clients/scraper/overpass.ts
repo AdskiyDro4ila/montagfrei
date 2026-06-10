@@ -113,7 +113,10 @@ export async function searchOverpassLeads(params: ScraperSearchParams): Promise<
 
   const res = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json',
+    },
     body: `data=${encodeURIComponent(query)}`,
   })
 
