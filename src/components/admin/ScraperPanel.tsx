@@ -288,7 +288,7 @@ export function ScraperPanel() {
 
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap justify-center gap-2">
 
             {SCRAPER_BRANCHES.map(({ id, label }) => {
 
@@ -306,7 +306,7 @@ export function ScraperPanel() {
 
                   className={`
 
-                    rounded-[4px] border-[3px] border-black px-3 py-1.5 font-display text-[10px] font-bold uppercase tracking-[0.08em] transition-colors
+                    flex min-h-[2.75rem] w-[calc((100%-0.5rem)/2)] items-center justify-center rounded-[4px] border-[3px] border-black px-2 py-2 text-center font-display text-[9px] font-bold uppercase leading-snug tracking-[0.06em] transition-colors sm:w-[calc((100%-1rem)/3)] sm:text-[10px] lg:w-[calc((100%-1.5rem)/4)]
 
                     ${active ? 'bg-black text-white' : 'text-black/50 hover:bg-black/[0.04] hover:text-black'}
 

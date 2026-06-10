@@ -24,6 +24,7 @@ const BRANCH_SEARCH_TERMS: Record<ScraperBranchId, string[]> = {
   fliesenleger: ['Fliesenleger', 'Plattenleger', 'Fliesen'],
   metallbau: ['Metallbau', 'Schlosser', 'Schmiede'],
   bodenleger: ['Bodenleger', 'Parkettleger', 'Parkett'],
+  fensterbau: ['Fensterbau', 'Glaserei', 'Fenster'],
 }
 
 /** Nur im Firmennamen — Kategorien von Geoapify sind oft zu allgemein. */
@@ -40,6 +41,7 @@ const BRANCH_NAME_KEYWORDS: Record<ScraperBranchId, RegExp> = {
   fliesenleger: /fliesenleger|plattenleger|fliesen(?!laden)|fliesenleg/i,
   metallbau: /metallbau|schlosser|schmiede|stahlbau|metallwerk/i,
   bodenleger: /bodenleger|parkettleger|parkett(?!sche)|estrich|fußboden/i,
+  fensterbau: /fensterbau|glaserei|fenster(?!bank)|verglasung|rollladen/i,
 }
 
 const EXCLUDE_NAME =

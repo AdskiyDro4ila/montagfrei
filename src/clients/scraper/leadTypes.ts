@@ -22,6 +22,8 @@ export const SCRAPER_BRANCHES = [
 
   { id: 'bodenleger', label: 'Bodenleger / Parkettleger' },
 
+  { id: 'fensterbau', label: 'Fensterbau / Glaserei' },
+
 ] as const
 
 

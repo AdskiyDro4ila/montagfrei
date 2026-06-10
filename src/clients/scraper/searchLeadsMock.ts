@@ -36,6 +36,8 @@ const MOCK_NAMES: Record<ScraperBranchId, string[]> = {
 
   bodenleger: ['Parkett Profi Lehmann', 'Boden & Parkett Sommer'],
 
+  fensterbau: ['Fenster & Glas Weber', 'Glaserei Müller GmbH'],
+
 }
 
 
