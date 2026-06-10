@@ -1,0 +1,39 @@
+import { Link } from 'react-router-dom'
+
+interface HomeFooterProps {
+  visible: boolean
+}
+
+const links = [
+  { to: '/faq', label: 'FAQ' },
+  { to: '/impressum', label: 'Impressum' },
+  { to: '/agb', label: 'AGB' },
+] as const
+
+export function HomeFooter({ visible }: HomeFooterProps) {
+  return (
+    <nav
+      className={`
+        fixed bottom-0 left-0 right-0 z-20 flex items-center justify-center gap-8
+        px-5 pb-[max(2rem,env(safe-area-inset-bottom))]
+        transition-all duration-700 ease-out
+        ${visible
+          ? 'translate-y-0 opacity-100'
+          : 'pointer-events-none translate-y-10 opacity-0'
+        }
+      `}
+      aria-hidden={!visible}
+    >
+      {links.map(({ to, label }) => (
+        <Link
+          key={to}
+          to={to}
+          tabIndex={visible ? 0 : -1}
+          className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-black/30 transition-colors duration-300 hover:text-black sm:text-xs"
+        >
+          {label}
+        </Link>
+      ))}
+    </nav>
+  )
+}

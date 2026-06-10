@@ -8,6 +8,9 @@ export const ROUTES = {
   access: '/access',
   admin: '/admin',
   demo: '/demo',
+  faq: '/faq',
+  impressum: '/impressum',
+  agb: '/agb',
 } as const
 
 export function demoRoute(slug: string): string {
