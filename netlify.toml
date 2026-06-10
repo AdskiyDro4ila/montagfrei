@@ -10,6 +10,9 @@
 
   NODE_VERSION = "20"
 
+  # Vite bettet VITE_* in den Client-Build ein — das ist erwartet, kein Leak.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_ADMIN_PASSWORD,VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY"
+
 
 
 [functions]
