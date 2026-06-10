@@ -8,10 +8,10 @@ export default async (request) => {
     })
   }
 
-  const url = new URL(request.url)
-  url.searchParams.set('apiKey', apiKey)
+  const params = new URL(request.url).searchParams
+  params.set('apiKey', apiKey)
 
-  const res = await fetch(`https://api.geoapify.com/v2/places?${url.searchParams}`)
+  const res = await fetch(`https://api.geoapify.com/v2/places?${params}`)
   return new Response(await res.text(), {
     status: res.status,
     headers: {

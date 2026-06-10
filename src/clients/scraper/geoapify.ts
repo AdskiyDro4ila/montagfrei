@@ -21,6 +21,9 @@ const BRANCH_SEARCH_TERMS: Record<ScraperBranchId, string[]> = {
   sanitaer: ['Sanitär', 'Heizung', 'Installateur'],
   schreiner: ['Schreinerei', 'Tischler'],
   dachdecker: ['Dachdecker', 'Bedachung'],
+  fliesenleger: ['Fliesenleger', 'Plattenleger', 'Fliesen'],
+  metallbau: ['Metallbau', 'Schlosser', 'Schmiede'],
+  bodenleger: ['Bodenleger', 'Parkettleger', 'Parkett'],
 }
 
 /** Nur im Firmennamen — Kategorien von Geoapify sind oft zu allgemein. */
@@ -34,6 +37,9 @@ const BRANCH_NAME_KEYWORDS: Record<ScraperBranchId, RegExp> = {
   sanitaer: /sanitär|heizung|installateur|klimatechnik|shk|badbau/i,
   schreiner: /schreinerei|tischlerei|schreiner|tischler(?!ei)/i,
   dachdecker: /dachdecker|bedachung|dachdeckerei/i,
+  fliesenleger: /fliesenleger|plattenleger|fliesen(?!laden)|fliesenleg/i,
+  metallbau: /metallbau|schlosser|schmiede|stahlbau|metallwerk/i,
+  bodenleger: /bodenleger|parkettleger|parkett(?!sche)|estrich|fußboden/i,
 }
 
 const EXCLUDE_NAME =
@@ -79,6 +85,25 @@ export class GeoapifyApiError extends Error {
   }
 }
 
+function parsePlacesResponse(text: string, status: number): GeoapifyFeature[] {
+  const trimmed = text.trimStart()
+  if (trimmed.startsWith('<')) {
+    throw new GeoapifyApiError(
+      'Places-Proxy liefert HTML statt JSON — Netlify-Redirect für /api/places prüfen.',
+      502,
+    )
+  }
+
+  let json: GeoapifyResponse
+  try {
+    json = JSON.parse(text) as GeoapifyResponse
+  } catch {
+    throw new GeoapifyApiError(`Ungültige API-Antwort (${status})`, status)
+  }
+
+  return json.features ?? []
+}
+
 async function fetchPlaces(query: URLSearchParams): Promise<GeoapifyFeature[]> {
   const res = await fetch(`/api/places?${query}`)
   const text = await res.text()
@@ -89,13 +114,12 @@ async function fetchPlaces(query: URLSearchParams): Promise<GeoapifyFeature[]> {
       const err = JSON.parse(text) as { error?: string; message?: string }
       detail = err.message ?? err.error ?? detail
     } catch {
-      if (text && !text.startsWith('<')) detail = text.slice(0, 200)
+      if (text && !text.trimStart().startsWith('<')) detail = text.slice(0, 200)
     }
     throw new GeoapifyApiError(detail, res.status)
   }
 
-  const json = JSON.parse(text) as GeoapifyResponse
-  return json.features ?? []
+  return parsePlacesResponse(text, res.status)
 }
 
 function parseFormatted(formatted?: string): { street: string; city: string } {
