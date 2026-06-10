@@ -4,6 +4,11 @@ import { LegalLayout, LegalSection } from '../components/legal/LegalLayout'
 export function FaqPage() {
   return (
     <LegalLayout title="FAQ">
+      <p className="text-lg leading-relaxed text-black/80">
+        Montagfrei macht professionelle Online-Präsenz für kleine Betriebe
+        einfach — ohne IT-Abteilung, ohne Komplexität.
+      </p>
+
       <LegalSection title="Was ist Montagfrei?">
         <p>
           Montagfrei ist eine digitale Plattform für kleine Handwerks- und
@@ -11,6 +16,31 @@ export function FaqPage() {
           und vergleichbare Gewerbe. Wir erstellen professionelle Demo-Websites
           und bereiten die Integration eines KI-Agenten auf der Live-Website des
           Kunden vor.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Für wen ist Montagfrei?">
+        <p>
+          Putzfirmen, Gartenbauer, Maler, Hausmeisterservices und vergleichbare
+          Gewerbe. Betriebe, die Qualität in ihrem Handwerk liefern — und eine
+          Website brauchen, die genauso zuverlässig wirkt.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Was macht Montagfrei konkret?">
+        <p>
+          Wir erstellen individuelle Demo-Websites mit persönlichem Zugangscode.
+          Der Kunde sieht sein digitales Schaufenster, gibt Feedback, und wir
+          setzen es auf der Wunsch-Domain um. Schritt für Schritt, ohne
+          Fachchinesisch.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Wie arbeitet Montagfrei?">
+        <p>
+          Klar, minimal, ehrlich. Kein Agentur-Blabla. Eine Demo, ein Code,
+          eine Website — fertig. Anpassungen jederzeit, weil Inhalte und Texte
+          zentral gepflegt werden können.
         </p>
       </LegalSection>
 
@@ -43,16 +73,18 @@ export function FaqPage() {
           Der KI-Agent wird auf Ihrer Live-Website eingebunden und beantwortet
           Kundenanfragen, unterstützt bei Terminanfragen und entlastet Ihren
           Betrieb im Alltag. Die Einführung erfolgt nach Fertigstellung und
-          Freigabe Ihrer Website.
+          Freigabe Ihrer Website — weniger Unterbrechung, mehr Zeit fürs
+          eigentliche Handwerk.
         </p>
       </LegalSection>
 
       <LegalSection title="Wie werden meine Daten geschützt?">
         <p>
           Wir verarbeiten personenbezogene Daten nur im Rahmen der geltenden
-          Datenschutzgesetze (DSGVO). Details entnehmen Sie unserer{' '}
-          <Link to="/datenschutz" className="text-black underline underline-offset-2">
-            Datenschutzerklärung
+          Datenschutzgesetze (DSGVO). Details entnehmen Sie dem Abschnitt
+          Datenschutz in unseren{' '}
+          <Link to="/agb" className="text-black underline underline-offset-2">
+            AGB
           </Link>
           .
         </p>
@@ -65,6 +97,18 @@ export function FaqPage() {
             kontakt@montagfrei.de
           </a>
           . Wir melden uns in der Regel innerhalb von zwei Werktagen.
+        </p>
+        <p>
+          Schreiben Sie uns kurz, welchen Betrieb Sie führen und was Sie
+          benötigen — Demo-Website, Live-Umsetzung oder KI-Agent. Wir melden
+          uns mit den nächsten Schritten.
+        </p>
+        <p>
+          Bereits einen Code? Auf der{' '}
+          <Link to="/" className="text-black underline underline-offset-2">
+            Startseite
+          </Link>{' '}
+          auf Montagfrei klicken und Code eingeben.
         </p>
       </LegalSection>
     </LegalLayout>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { LegalLayout, LegalSection } from '../components/legal/LegalLayout'
 
 export function ImpressumPage() {
@@ -29,6 +30,18 @@ export function ImpressumPage() {
           <a href="mailto:kontakt@montagfrei.de" className="text-black underline underline-offset-2">
             kontakt@montagfrei.de
           </a>
+        </p>
+        <p>
+          Wir melden uns in der Regel innerhalb von zwei Werktagen. Schreiben Sie
+          uns kurz, welchen Betrieb Sie führen und was Sie benötigen —
+          Demo-Website, Live-Umsetzung oder KI-Agent.
+        </p>
+        <p>
+          Bereits einen Code? Auf der{' '}
+          <Link to="/" className="text-black underline underline-offset-2">
+            Startseite
+          </Link>{' '}
+          auf Montagfrei klicken und Code eingeben.
         </p>
       </LegalSection>
 

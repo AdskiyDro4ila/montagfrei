@@ -11,9 +11,6 @@ export const ROUTES = {
   faq: '/faq',
   impressum: '/impressum',
   agb: '/agb',
-  datenschutz: '/datenschutz',
-  ueberUns: '/ueber-uns',
-  kontakt: '/kontakt',
 } as const
 
 export function demoRoute(slug: string): string {
