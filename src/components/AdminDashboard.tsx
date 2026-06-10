@@ -36,11 +36,6 @@ export function AdminDashboard() {
           </button>
         </header>
 
-        <p className="mb-8 font-display text-xs leading-relaxed text-black/50">
-          Ablauf: Firmen im Umkreis suchen → als Kunde anlegen → in der Datenbank verwalten.
-          Feste Demo-Kunden bleiben im System, neue Kunden kannst du jederzeit löschen.
-        </p>
-
         <AdminTabs active={tab} onChange={setTab} />
 
         <div>

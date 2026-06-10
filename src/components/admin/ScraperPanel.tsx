@@ -115,7 +115,7 @@ export function ScraperPanel() {
   return (
     <AdminSection
       title="Firmen suchen"
-      description="1. Mittelpunkt setzen (Karte klicken oder Standort nutzen) · 2. Umkreis und Branchen wählen · 3. Suchen · 4. Als Kunde anlegen"
+      description="Firmen im Umkreis über OpenStreetMap finden. Mittelpunkt auf der Karte setzen, Radius und Branchen wählen, dann als Kunde anlegen."
     >
       <div className="space-y-8">
         <ScraperMap center={center} radiusKm={radiusKm} onCenterChange={setCenter} />

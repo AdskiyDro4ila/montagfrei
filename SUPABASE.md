@@ -4,10 +4,22 @@ Scraper-Kunden (über **Als Kunde** angelegt) werden in Supabase gespeichert, we
 
 Ohne Supabase-Konfiguration läuft alles weiter über **localStorage** — gleiche UI, gleiche API.
 
-## 1. Projekt anlegen
+## 1. Tabelle anlegen (einmalig)
 
-1. [supabase.com](https://supabase.com) → neues Projekt
-2. **SQL Editor** → Inhalt von `supabase/migrations/001_clients.sql` ausführen
+**Option A — SQL Editor** (schnellste):
+
+1. [Supabase Dashboard](https://supabase.com/dashboard/project/bywkhyanddtlqcvhhrii) → **SQL Editor**
+2. Inhalt von `supabase/migrations/001_clients.sql` einfügen → **Run**
+
+**Option B — Supabase CLI**:
+
+```bash
+npx supabase login
+npx supabase link --project-ref bywkhyanddtlqcvhhrii
+npx supabase db push
+```
+
+(`supabase init` ist im Repo bereits erledigt.)
 
 ## 2. Umgebungsvariablen
 
@@ -18,7 +30,23 @@ VITE_SUPABASE_URL=https://xxxx.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJ...
 ```
 
-Werte unter **Project Settings → API** (Project URL + anon public key).
+Werte unter **Project Settings → API**:
+
+| Variable | Welcher Key |
+|----------|-------------|
+| `VITE_SUPABASE_URL` | Project URL |
+| `VITE_SUPABASE_ANON_KEY` | **anon JWT** (`eyJ…`) oder Publishable key (`sb_publishable_…`) |
+
+Den **Secret key** (`sb_secret_…`) und das **Postgres-Passwort** nie ins Frontend — nur serverseitig / CLI.
+
+### Aktuelles Projekt
+
+| | |
+|--|--|
+| URL | `https://bywkhyanddtlqcvhhrii.supabase.co` |
+| Project ref | `bywkhyanddtlqcvhhrii` |
+
+`.env.local` ist bereits gesetzt. **Tabelle `clients` fehlt noch** — siehe Schritt 1 unten.
 
 ## 3. Lokal testen
 
