@@ -55,7 +55,7 @@ export function leadToClientData(lead: ScraperLead): ClientData {
     hours: 'Mo–Fr nach Vereinbarung',
     serviceArea: lead.city,
     scraper: {
-      source: 'OSM Lead-Suche',
+      source: 'Geoapify Lead-Suche',
       target: 'Kontakt, Branche, Standort',
       status: 'done',
       lastRun: now,

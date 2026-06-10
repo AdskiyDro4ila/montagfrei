@@ -65,6 +65,7 @@ Vor dem ersten Deploy:
    | `VITE_ADMIN_PASSWORD` | dein-sicheres-passwort |
    | `VITE_SUPABASE_URL` | *(optional)* Supabase Project URL |
    | `VITE_SUPABASE_ANON_KEY` | *(optional)* Supabase anon key |
+   | `GEOAPIFY_API_KEY` | **Scraper** — kostenlos bei [geoapify.com](https://myprojects.geoapify.com/) |
 
    Ohne Supabase: dynamische Kunden landen im Browser (localStorage). Mit Supabase: zentral in der Cloud — siehe [`SUPABASE.md`](SUPABASE.md).
 
