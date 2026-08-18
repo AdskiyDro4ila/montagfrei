@@ -12,11 +12,11 @@ export function ImpressumPage() {
         <p>
           Montagfrei
           <br />
-          [Vor- und Nachname / Firma]
+          Maxim Prokoshev
           <br />
-          [Straße und Hausnummer]
+          Wilhelm-Geiger-Platz 8
           <br />
-          [PLZ Ort]
+          70469 Stuttgart Feuerbach
           <br />
           Deutschland
         </p>
@@ -64,9 +64,11 @@ export function ImpressumPage() {
 
       <LegalSection title="Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)">
         <p>
-          [Vor- und Nachname]
+          Maxim Prokoshev
           <br />
-          [Anschrift wie oben]
+          Wilhelm-Geiger-Platz 8
+          <br />
+          70469 Stuttgart Feuerbach
         </p>
       </LegalSection>
 

@@ -188,8 +188,8 @@ export function AgbPage() {
           Datenschutz-Grundverordnung (DSGVO).
         </p>
         <p>
-          <strong>Verantwortlicher:</strong> Montagfrei, [Vor- und Nachname /
-          Firma], [Anschrift], E-Mail:{' '}
+          <strong>Verantwortlicher:</strong> Montagfrei, Maxim Prokoshev,
+          Wilhelm-Geiger-Platz 8, 70469 Stuttgart Feuerbach, E-Mail:{' '}
           <a href="mailto:kontakt@montagfrei.com" className="text-black underline underline-offset-2">
             kontakt@montagfrei.com
           </a>
